@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Portal" Class="DataClasses_PortalDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCKTHBNK-DB07\NEWMOTOR;Initial Catalog=Portal;User ID=locksql" SettingsObjectName="Portal.Components.My.MySettings" SettingsPropertyName="PortalConnectionString5" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vwks_ssoUsers" Member="vwks_ssoUsers">
+    <Type Name="vwks_ssoUser">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="UserType" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleSettingsByPortal" Member="ModuleSettingsByPortals">
+    <Type Name="ModuleSettingsByPortal">
+      <Column Name="ModulePage" Type="System.String" DbType="VarChar(67)" CanBeNull="true" />
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTitle" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditRoles" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaneName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CacheTimeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleDefId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FriendlyName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="DesktopSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MobileSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ModuleDefCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectRoles" Member="ProjectRoles">
+    <Type Name="ProjectRole">
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleDescription" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectRoleUsers" Member="ProjectRoleUsers">
+    <Type Name="ProjectRoleUser">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleDescription" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Permissions" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom_Permission" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectSingleSignOn_Mapping" Member="ProjectSingleSignOn_Mappings">
+    <Type Name="ProjectSingleSignOn_Mapping">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserMapping" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleDescription" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Permissions" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom_Permission" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTabs" Member="UserTabs">
+    <Type Name="UserTab">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="TabOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Permission" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Sortpath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ads_active" Member="v_ads_actives">
+    <Type Name="v_ads_active">
+      <Column Name="objectGUID" Type="System.Data.Linq.Binary" DbType="VarBinary(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="lastLogon" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="accountExpires" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="givenname" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="physicalDeliveryOfficeName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="department" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="facsimileTelephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mobile" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="ou" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mail" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="sAMAccountName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="telephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="displayName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="company" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="pager" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="streetaddress" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ads_lapcs" Member="v_ads_lapcs">
+    <Type Name="v_ads_lapc">
+      <Column Name="objectGUID" Type="System.Data.Linq.Binary" DbType="VarBinary(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="lastLogon" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="accountExpires" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="givenname" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="physicalDeliveryOfficeName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="department" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="facsimileTelephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mobile" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="ou" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mail" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="sAMAccountName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="telephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="displayName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="company" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="pager" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="streetaddress" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_location" Member="v_locations">
+    <Type Name="v_location">
+      <Column Name="LOCATION_CODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="LOCATION_NAME" Type="System.String" DbType="VarChar(164)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_LWT_USER" Member="V_LWT_USERs">
+    <Type Name="V_LWT_USER">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="objectGUID" Type="System.Data.Linq.Binary" DbType="VarBinary(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="lastLogon" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="accountExpires" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="givenname" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="physicalDeliveryOfficeName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="department" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="facsimileTelephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mobile" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="ou" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="mail" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="sAMAccountName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="telephoneNumber" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="displayName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="company" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="pager" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="streetaddress" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_NewUserADS" Member="v_NewUserADs">
+    <Type Name="v_NewUserAD">
+      <Column Name="objectGUID" Type="System.Data.Linq.Binary" DbType="VarBinary(4000)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="PhotoPath" Type="System.String" DbType="VarChar(22) NOT NULL" CanBeNull="false" />
+      <Column Name="EmpGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="TempUserName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="TempPassword" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="TempPasswordQuestion" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="TempPasswordAnswer" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActivate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivateCode" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ActivationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SSO_Login" Member="V_SSO_Logins">
+    <Type Name="V_SSO_Login">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_user_roles" Member="v_user_roles">
+    <Type Name="v_user_role">
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="UserMapping" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Permissions" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom_Permission" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vLEON_UserMapping" Member="vLEON_UserMappings">
+    <Type Name="vLEON_UserMapping">
+      <Column Name="EMPCode" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Salutation" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Ename" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esurname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NickName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FullNameThai" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FullNameEng" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IDCODE" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EmployDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EffectiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ResignDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="Char(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Signature" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DivName" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
+      <Column Name="EmpTypeDesc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName2" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmpGroup" Member="EmpGroups">
+    <Type Name="EmpGroup">
+      <Column Name="EmpGroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmpGroupName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SSO_UserGroup" Member="SSO_UserGroups">
+    <Type Name="SSO_UserGroup">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProjectCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserGroupCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="TitleOfCourtesy" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HireDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Region" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Notes" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReportsTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhotoPath" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmpGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Amphur" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="District" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="LOCATION_CODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="TempUserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TempPassword" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TempPasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="TempPasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsActivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ActivateCode" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ActivationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Employee_Employee" Member="Employees" ThisKey="EmployeeID" OtherKey="ReportsTo" Type="Employee" />
+      <Association Name="Employee_Employee" Member="Employee" ThisKey="ReportsTo" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MailNotifications" Member="MailNotifications">
+    <Type Name="MailNotification">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MailFrom" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailTo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailCC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailBcc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailSubject" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailBody" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_amphur" Member="master_amphurs">
+    <Type Name="master_amphur">
+      <Column Name="AMPHUR_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AMPHUR_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="AMPHUR_NAME" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="GEO_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROVINCE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_district" Member="master_districts">
+    <Type Name="master_district">
+      <Column Name="DISTRICT_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DISTRICT_CODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="DISTRICT_NAME" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AMPHUR_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROVINCE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GEO_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_geography" Member="master_geographies">
+    <Type Name="master_geography">
+      <Column Name="GEO_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GEO_NAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_location" Member="master_locations">
+    <Type Name="master_location">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LOCATION_CODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="PROVINCE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AMPHUR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DISTRICT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ZIPCODE" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_province" Member="master_provinces">
+    <Type Name="master_province">
+      <Column Name="PROVINCE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PROVINCE_CODE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="PROVINCE_NAME" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="GEO_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.master_zipcode" Member="master_zipcodes">
+    <Type Name="master_zipcode">
+      <Column Name="ZIPCODE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DISTRICT_CODE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AMPHUR_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DISTRICT_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZIPCODE" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Permissions" Member="Portal_Permissions">
+    <Type Name="Portal_Permission">
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PermissionCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PermissionName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Roles" Member="Portal_Roles">
+    <Type Name="Portal_Role">
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleDescription" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Portal_Role_Portal_TabRole" Member="Portal_TabRoles" ThisKey="RoleID" OtherKey="RoleID" Type="Portal_TabRole" />
+      <Association Name="Portal_Role_Portal_UserRole" Member="Portal_UserRoles" ThisKey="RoleID" OtherKey="RoleID" Type="Portal_UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Table" Member="Portal_Tables">
+    <Type Name="Portal_Table">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ITEM_CODE" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="ITEM_SEQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ITEM_STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ITEM_PARENT" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ITEM_DESC_TH" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ITEM_DESC_EN" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TABLE_NUMBER" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="CREATIONDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ITEM_NOTE" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_UserTabs" Member="Portal_UserTabs">
+    <Type Name="Portal_UserTab">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TABID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PERMISSION" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortalCfg_Globals" Member="PortalCfg_Globals">
+    <Type Name="PortalCfg_Global">
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="AlwaysShowEditButton" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UnderConstruction" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalPage" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cfg_conn" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cfg_query_user" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cfg_url_passport" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="PortalCfg_Global_PortalCfg_Tab" Member="PortalCfg_Tabs" ThisKey="PortalId" OtherKey="PortalId" Type="PortalCfg_Tab" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortalCfg_Modules" Member="PortalCfg_Modules">
+    <Type Name="PortalCfg_Module">
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleTitle" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditRoles" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaneName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CacheTimeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleDefId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PortalCfg_Module_PortalCfg_ModuleSetting" Member="PortalCfg_ModuleSettings" ThisKey="ModuleId" OtherKey="ModuleId" Type="PortalCfg_ModuleSetting" />
+      <Association Name="PortalCfg_Tab_PortalCfg_Module" Member="PortalCfg_Tab" ThisKey="TabId" OtherKey="TabId" Type="PortalCfg_Tab" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortalCfg_ModuleSettings" Member="PortalCfg_ModuleSettings">
+    <Type Name="PortalCfg_ModuleSetting">
+      <Column Name="ModuleSettingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SettingName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SettingText" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PortalCfg_Module_PortalCfg_ModuleSetting" Member="PortalCfg_Module" ThisKey="ModuleId" OtherKey="ModuleId" Type="PortalCfg_Module" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SingleSignOn_Mapping" Member="SingleSignOn_Mappings">
+    <Type Name="SingleSignOn_Mapping">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RoleCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserMapping" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SingleSignOn_Passport" Member="SingleSignOn_Passports">
+    <Type Name="SingleSignOn_Passport">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Passport" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PortalCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortalCfg_ModuleDefinitions" Member="PortalCfg_ModuleDefinitions">
+    <Type Name="PortalCfg_ModuleDefinition">
+      <Column Name="ModuleDefId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleDefName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ModuleDefSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ModuleDefMobileSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ModuleDefCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ModuleDefDesc" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_TabRoles" Member="Portal_TabRoles">
+    <Type Name="Portal_TabRole">
+      <Column Name="TabID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Portal_Role_Portal_TabRole" Member="Portal_Role" ThisKey="RoleID" OtherKey="RoleID" Type="Portal_Role" IsForeignKey="true" />
+      <Association Name="PortalCfg_Tab_Portal_TabRole" Member="PortalCfg_Tab" ThisKey="TabID" OtherKey="TabId" Type="PortalCfg_Tab" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_UserRoles" Member="Portal_UserRoles">
+    <Type Name="Portal_UserRole">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Permissions" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Custom_Permission" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Portal_Role_Portal_UserRole" Member="Portal_Role" ThisKey="RoleID" OtherKey="RoleID" Type="Portal_Role" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Portal_User_Portal_UserRole" Member="Portal_User" ThisKey="UserID" OtherKey="UserID" Type="Portal_User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_ModuleSettings" Member="v_ModuleSettings">
+    <Type Name="v_ModuleSetting">
+      <Column Name="ModuleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTitle" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditRoles" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PaneName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CacheTimeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleDefId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FriendlyName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="DesktopSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MobileSourceFile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ModuleDefCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Users" Member="Portal_Users">
+    <Type Name="Portal_User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastLockOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ExpiredDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OTP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Portal_User_Portal_UserRole" Member="Portal_UserRoles" ThisKey="UserID" OtherKey="UserID" Type="Portal_UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Users_OTPLogs" Member="Portal_Users_OTPLogs">
+    <Type Name="Portal_Users_OTPLog">
+      <Column Name="GUID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="taskId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="messageId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Users_PasswordLogs" Member="Portal_Users_PasswordLogs">
+    <Type Name="Portal_Users_PasswordLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OldPassword" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NewPassword" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_DesktopTabs" Member="v_DesktopTabs">
+    <Type Name="v_DesktopTab">
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageId" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="TabName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="TabOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MobileTabName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sortpath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TreeLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IconID" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_UserTabs" Member="v_UserTabs">
+    <Type Name="v_UserTab">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="TabOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Permission" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PortalName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Sortpath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IconID" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PageId" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PortalCfg_Tabs" Member="PortalCfg_Tabs">
+    <Type Name="PortalCfg_Tab">
+      <Column Name="TabId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TabName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TabOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccessRoles" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShowMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MobileTabName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PageID" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="IconID" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Association Name="PortalCfg_Tab_PortalCfg_Module" Member="PortalCfg_Modules" ThisKey="TabId" OtherKey="TabId" Type="PortalCfg_Module" />
+      <Association Name="PortalCfg_Tab_Portal_TabRole" Member="Portal_TabRoles" ThisKey="TabId" OtherKey="TabID" Type="Portal_TabRole" />
+      <Association Name="PortalCfg_Global_PortalCfg_Tab" Member="PortalCfg_Global" ThisKey="PortalId" OtherKey="PortalId" Type="PortalCfg_Global" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Portal_Users_DefaultPage" Member="Portal_Users_DefaultPages">
+    <Type Name="Portal_Users_DefaultPage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_SetUserRolePermission" Method="sp_SetUserRolePermission">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RoleId" Parameter="roleId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Custom_Permission" Parameter="custom_Permission" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
